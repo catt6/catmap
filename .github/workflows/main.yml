@@ -1,5 +1,5 @@
 name: Send PMtiles to project repo
-on: [workflow_call]
+on: [workflow_dispatch]
 
 jobs:
   Get-Daily-Builds:
