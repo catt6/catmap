@@ -6,10 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # - run: echo "Hello World!"
-    # - run: wget https://github.com/protomaps/go-pmtiles/releases/download/v1.20.0/go-pmtiles_1.20.0_Linux_x86_64.tar.gz
-    # - run: tar -zxvf go-pmtiles_1.20.0_Linux_x86_64.tar.gz
+      - run: wget -q https://github.com/protomaps/go-pmtiles/releases/download/v1.20.0/go-pmtiles_1.20.0_Linux_x86_64.tar.gz
+      - run: tar -zxvf go-pmtiles_1.20.0_Linux_x86_64.tar.gz
     # - run: ./pmtiles -h
-      - run: wget -q --spider "https://build.protomaps.com/$(date +%Y%m%d).pmtiles" && wget -q "https://build.protomaps.com/$(date +%Y%m%d).pmtiles" || wget -q "https://build.protomaps.com/$(date -d 'yesterday' +%Y%m%d).pmtiles"
-      - run: echo "Downloaded:\ $(ls | grep 'pmtiles')"
+      - run: ./pmtiles extract "https://build.protomaps.com/$(date +%Y%m%d).pmtiles iran.pmtiles" --bbox=24.785156,22.105999,75.937500,43.580391 || ./pmtiles extract "https://build.protomaps.com/$(date -d 'yesterday' +%Y%m%d).pmtiles iran.pmtiles" --bbox=24.785156,22.105999,75.937500,43.580391
+      - run: ls -lh
+      # - run: wget -q --spider "https://build.protomaps.com/$(date +%Y%m%d).pmtiles" && wget -q "https://build.protomaps.com/$(date +%Y%m%d).pmtiles" || wget -q "https://build.protomaps.com/$(date -d 'yesterday' +%Y%m%d).pmtiles"
+      # - run: echo "Downloaded:\ $(ls | grep 'pmtiles')"
 
       
