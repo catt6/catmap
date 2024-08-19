@@ -14,4 +14,14 @@ jobs:
       # - run: wget -q --spider "https://build.protomaps.com/$(date +%Y%m%d).pmtiles" && wget -q "https://build.protomaps.com/$(date +%Y%m%d).pmtiles" || wget -q "https://build.protomaps.com/$(date -d 'yesterday' +%Y%m%d).pmtiles"
       # - run: echo "Downloaded:\ $(ls | grep 'pmtiles')"
 
+      - name: Pushes test file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'iran.pmtiles'
+          destination_repo: 'catt6/catmap'
+          user_email: 'fuck@amiria703.ir'
+          user_name: 'catt6'
+
       
